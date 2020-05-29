@@ -1,5 +1,5 @@
 # Paired-tag Analysis
-Analysis of Paired-tag datasets include the following steps:
+Analysis of Paired-tag/Paired-seq datasets include the following steps:
 
 ## 1 Pre-processing
 Extract cellular barcode from Read2, map the reads to reference cell_ID, and convert the mapped cell ID samfiles to useable fastq files.
