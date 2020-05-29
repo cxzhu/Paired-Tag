@@ -9,7 +9,11 @@ Use shellscrips/01.pre_process_paired_tag_fastq.sh.
 ## 2 Mapping to the genome
 For DNA reads, we used bowtie2; for RNA reads, we used STAR.
 
-Use shellscrips/02.proc_DNA.sh and shellscrips/03.proc_RNA.sh.
+Use 
+shellscrips/02.proc_DNA.sh
+and 
+shellscrips/03.proc_RNA.sh
+.
 
 After these, the fastq files of each sub-libraries were then converted to cell-counts matrices.
 
