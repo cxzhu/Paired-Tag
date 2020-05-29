@@ -2,7 +2,34 @@
 use strict;
 use warnings;
 
-open IN, $ARGV[0] or die $!;
+### format of merge_list.txt
+
+# prefix_of_merged_matrix
+# folder_name_of_matrix_of_sub_library_1	prefix_to_add_to_cellular_barcode_of_library_1
+# folder_name_of_matrix_of_sub_library_2	prefix_to_add_to_cellular_barcode_of_library_2
+# ...						...
+
+## eg
+# DNA_active_merge
+# CZ401_mm10_sorted_rmdup.bam_mapq10_mtx3 01
+# CZ403_mm10_sorted_rmdup.bam_mapq10_mtx3 02
+# CZ405_mm10_sorted_rmdup.bam_mapq10_mtx3 03
+# CZ407_mm10_sorted_rmdup.bam_mapq10_mtx3 04
+# CZ409_mm10_sorted_rmdup.bam_mapq10_mtx3 05
+# CZ411_mm10_sorted_rmdup.bam_mapq10_mtx3 06
+# CZ413_mm10_sorted_rmdup.bam_mapq10_mtx3 07
+# CZ415_mm10_sorted_rmdup.bam_mapq10_mtx3 08
+# CZ417_mm10_sorted_rmdup.bam_mapq10_mtx3 09
+# CZ419_mm10_sorted_rmdup.bam_mapq10_mtx3 10
+# CZ421_mm10_sorted_rmdup.bam_mapq10_mtx3 11
+# CZ423_mm10_sorted_rmdup.bam_mapq10_mtx3 12
+# CZ425_mm10_sorted_rmdup.bam_mapq10_mtx3 13
+# CZ427_mm10_sorted_rmdup.bam_mapq10_mtx3 14
+# CZ429_mm10_sorted_rmdup.bam_mapq10_mtx3 15
+# CZ431_mm10_sorted_rmdup.bam_mapq10_mtx3 16
+
+
+open IN, $ARGV[0] or die $!; ### $ARGV[0] = merge_list.txt
 my %list;
 my $output = <IN>;
 chomp($output);
