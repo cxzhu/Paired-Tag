@@ -20,5 +20,9 @@ The last round of combinatorial index is PCR indexing (sub-libraries). To merge 
 Use perlscripts/merge_mtx.pl.
 
 ## 4 Downstream custom analyses
-We can cluster the single cells for DNA and RNA independely. For RNA analysis, Seurat (http://www.satijalab.org/seurat) is recommended. For DNA analysis, snapATAC (https://github.com/r3fang/SnapATAC) is recommeded.
+We can cluster the single cells for DNA and RNA independely. 
+
+For RNA analysis, Seurat (http://www.satijalab.org/seurat) is recommended. 
+For DNA analysis, snapATAC (https://github.com/r3fang/SnapATAC) is recommeded.
+
 You can also use Paired-map (https://github.com/cxzhu/Paired-map) to do the clustering. Paired-map contain few essential functions for analysis of Paired-seq/tag dataset but still under development. The Jaccard module was borrowed from snapATAC.
