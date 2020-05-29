@@ -1,6 +1,4 @@
-# Paired-tag
-Analysis of Paired-tag datasets
-
+# Paired-tag Analysis
 Analysis of Paired-tag datasets include the following steps:
 
 ## 1 Pre-processing
