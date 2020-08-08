@@ -13,6 +13,8 @@ Use shellscrips/02.proc_DNA.sh and shellscrips/03.proc_RNA.sh.
 
 After these, the fastq files of each sub-libraries were then converted to cell-counts matrices.
 
+
+
 For combined step 1 and 2, please see also https://github.com/cxzhu/Paired-Tag/tree/master/pipeline.
 
 
