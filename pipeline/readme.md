@@ -5,7 +5,7 @@ a Install all packages needed, including bowtie, bowtie2, STAR, trim_galore, sam
 
 b Download all references and scripts from https://github.com/cxzhu/Paired-Tag
 
-c Modify the path in "run.sh"
+c Modify the runtime path in "run.sh"
 
 ### 2 Run pipeline
 a Modify the sample information in filehead of "run.sh"
