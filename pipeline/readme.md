@@ -17,4 +17,4 @@ c Run preprocessing by typing "sh run.sh Pre_bz2" (for *fastq.bz2 files) or "sh 
 d Run mapping by typing "sh run.sh RUN_mm" (for mm10 mapping); "RUN_hs" not added yet, or just replace the ref_path in filehead of "run.sh"
 
 
- This pipelines will give cell-gene/cell-bin count matrices for each sub-library.
+ This pipeline will give cell-gene/cell-bin count matrices for each sub-library.
