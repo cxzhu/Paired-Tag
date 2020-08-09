@@ -6,7 +6,7 @@ sample=$3
 echo ${sample}
 
 ln -s ${path}/${sample}_R1.fq.gz ./01.rawdata/${sample}_R1.fq.gz
-ln -s ${path}/${sample}_R2.fq.gz ./01.rawdata/${sample}_R1.fq.gz
+ln -s ${path}/${sample}_R2.fq.gz ./01.rawdata/${sample}_R2.fq.gz
 
 cd 01.rawdata/
 nohup fastqc ${sample}_R1.fq.gz 2>&1 > ../log/fastqc_log.log &
