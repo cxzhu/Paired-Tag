@@ -106,14 +106,26 @@ then
 			wait
 			t=0
 		fi
-		trim_galore -a AAAAAAAAAAAAAAAACCTGCAGGNNNNNNNNNN ${sample}_BC_cov_trimmed.fq.gz &
+		trim_galore -a AAAAAAAAAAAAAAAACCTGCAGGNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN ${sample}_BC_cov_trimmed.fq.gz &
 	done
 	wait
 	for i in $RNA_id
 	do
 		sample=${sample_prefix}${i}
-		mv ${sample}_BC_cov_trimmed.fq.gz ../02.trimmed/
-		mv ${sample}_BC_cov_trimmed_trimmed.fq.gz ../02.trimmed/
+		t=t+1
+		if [ t>8 ]
+		then
+			wait
+			t=0
+		fi
+		trim_galore -a CCTGCAGGNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN ${sample}_BC_cov_trimmed_trimmed.fq.gz &
+	done
+	wait
+	for i in $RNA_id
+	do
+		sample=${sample_prefix}${i}
+		rm ${sample}_BC_cov_trimmed.fq.gz 
+		mv ${sample}_BC_cov_trimmed_trimmed_trimmed.fq.gz ../02.trimmed/
 	done
 	for i in $DNA_id
 	do
@@ -132,7 +144,7 @@ then
 	do
 		cd ../02.trimmed/
 		s=${sample_prefix}${i}
-		STAR  --runThreadN 8 --genomeDir $mm10_STAR_ref --readFilesIn ${s}_BC_cov_trimmed_trimmed.fq.gz --readFilesCommand zcat --outFileNamePrefix ${s}_mm10_ --outSAMtype BAM Unsorted
+		STAR  --runThreadN 8 --genomeDir $mm10_STAR_ref --readFilesIn ${s}_BC_cov_trimmed_trimmed_trimmed.fq.gz --readFilesCommand zcat --outFileNamePrefix ${s}_mm10_ --outSAMtype BAM Unsorted
 		mv ${s}_mm10_Aligned.out.bam ../03.mm10_mapping/
 		cd ../03.mm10_mapping
 		samtools view -h -F 256 ${s}_mm10_Aligned.out.bam -b > ${s}\_clean.bam
