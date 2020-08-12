@@ -106,7 +106,7 @@ then
 			wait
 			t=0
 		fi
-		trim_galore -a AAAAAAAAAAAAAAAACCTGCAGGNNNNACGAATGCTCTGGCCTNNNNNNNNNN ${sample}_BC_cov_trimmed.fq.gz &
+		trim_galore -a AAAAAAAAAAAAAAAACCTGCAGGNNNNACGAATGCTCTGGCCTNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN ${sample}_BC_cov_trimmed.fq.gz &
 	done
 	wait
 	for i in $RNA_id
@@ -118,7 +118,7 @@ then
 			wait
 			t=0
 		fi
-		trim_galore -a CCTGCAGGNNNNACGAATGCTCTGGCCTNNNNNNNNNN ${sample}_BC_cov_trimmed_trimmed.fq.gz &
+		trim_galore -a CCTGCAGGNNNNACGAATGCTCTGGCCTNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN ${sample}_BC_cov_trimmed_trimmed.fq.gz &
 	done
 	wait
 	for i in $RNA_id
