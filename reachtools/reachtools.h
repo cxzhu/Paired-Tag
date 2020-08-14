@@ -381,7 +381,7 @@ public:
 		if(rawline.length() < 93)return;
 		dock = 0;
 		int t = 0;
-		int cur_s = 0;
+		int cur_s = 10;
 		string bait = "GTGGCCGATGTTTCG";
 		for(int i = -2; i < 7; ++i){
 			string qu = rawline.substr(17+i, 15);
@@ -391,7 +391,7 @@ public:
 			t = i;
 		}
 		//if(cur_s<15)return;
-		if(cur_s<3)return;
+		if(cur_s<13)return;
 		dock = 1;
 		sbc1 = rawline.substr(10, 7);
 		umi = rawline.substr(0, 10);
@@ -404,7 +404,7 @@ public:
 
 		//2nd bc
 		bait = "ATCCACGTGCTTGAG";
-		cur_s = 0;
+		cur_s = 10;
 		int tt = t;
 		for(int i = -2; i < 3; ++i){
 			string qu = rawline.substr(54+i+tt, 15);
@@ -414,14 +414,14 @@ public:
 			tt = t + i;
 		}
 		//if(cur_s<13)return;
-		if(cur_s<2)return;
+		if(cur_s<12)return;
 		t = tt;
 		sbc2 = rawline.substr(47+t, 7);
 		dock = 2;
 
 		//4th BC
 		bait = "AGGCCAGAGCATTCG";
-		cur_s = 0;
+		cur_s = 10;
 		for(int i = -2; i < 3; ++i ){
 			string qu = rawline.substr(69+i+tt, 15);
 			int score = align_score(qu, bait);
@@ -430,7 +430,7 @@ public:
 			tt = t + i;
 		}
 		//if(cur_s<9)return;
-		if(cur_s<1)return;
+		if(cur_s<11)return;
 		t = tt;
 		if(rawline.length() < 89+t)return;
 		//sbc4 = rawline.substr(86+t, 3);
