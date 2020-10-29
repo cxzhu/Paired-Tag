@@ -1928,7 +1928,7 @@ void combine2(string r2, string ty){
 
 	// cout << total << " read pairs processed." << endl;
 	// cout << pass << " read pairs passed docking rate." << endl;
-	int aaa = pass*10000/total;
+	int aaa = int(pass*10000/total);
 	float ratio = float(aaa) / 100;
 	cout << pass << "\t" << total << "\t" << ratio << "%" << " of reads have full barcodes for " << r2 << "sample." << endl;
 	return;
