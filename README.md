@@ -5,6 +5,7 @@ Analysis of Paired-Tag/Paired-seq datasets include the following steps:
 Extract cellular barcode from Read2, map the reads to reference cell_ID, and convert the mapped cell ID samfiles to useable fastq files.
 
 Use shellscrips/01.pre_process_paired_tag_fastq.sh.
+*** See the comments in this script if you are processing fastq files downloaded directly from GEO.
 
 ## 2 Mapping to the genome
 For DNA reads, we used bowtie2; for RNA reads, we used STAR.
