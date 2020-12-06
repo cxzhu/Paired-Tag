@@ -1,5 +1,39 @@
 # Paired-Tag Analysis
-Analysis of Paired-Tag/Paired-seq datasets include the following steps:
+#### Please have the following softwares installed first:
+
+bowtie, http://bowtie-bio.sourceforge.net/index.shtml
+
+bowtie2, http://bowtie-bio.sourceforge.net/bowtie2/index.shtml
+
+Trim_galore, https://www.bioinformatics.babraham.ac.uk/projects/trim_galore/
+
+STAR, https://github.com/alexdobin/STAR
+
+
+#### Please follow the following steps to prepare the scripts for Paired-Tag data preprocessing.
+
+1. Download and uncompress the scripts: 
+
+<code>wget https://github.com/cxzhu/Paired-Tag/archive/master.zip</code>
+
+<code>unzip master.zip</code>
+
+2. Build the "reachtools" tool:
+
+<code>cd reachtools</code>
+
+<code>sh make.sh</code>
+
+3. Build the Cellular Barocdes reference:
+
+<code>cd ../references</code>
+
+<code>bowtie-build ./cell_id_full.fa cell_id</code>
+
+
+
+#### Analysis of Paired-Tag/Paired-seq datasets include the following steps:
+
 
 ## 1 Pre-processing
 Extract cellular barcode from Read2, map the reads to reference cell_ID, and convert the mapped cell ID samfiles to useable fastq files.
