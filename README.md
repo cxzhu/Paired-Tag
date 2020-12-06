@@ -42,6 +42,41 @@ Use shellscrips/01.pre_process_paired_tag_fastq.sh.
 
 *** See the comments in this script if you are processing fastq files downloaded directly from GEO.
 
+*** Please modification the paths to reference files according to the annotations in the script file.
+
+#### The output of this step includes:
+
+<code>Sample_combined.fq.gz</code>  This file is a combined fastq file including Read1 sequences/qualities and barcode sequences extracted from Read2.
+
+<code>Sample_BC.sam</code> This is a temporally file used to assign extracted barcode sequences to Cellular Barcode. Please delete this file if you have successful obtain <code>Sample_BC_cov.fq.gz</code>.
+
+<code>Sample_BC_cov.fq.gz</code> This is the fastq file with Read1 sequences and qualities, the Cellular Barocde and UMI from Read2 are now in ReadName section of the fastq file (and subsequent alignment files).
+
+The Cellular Barcode and UMI are in the format of <code>ILLUMINA_READ_NAME:aa:bb:cc:UMI</code>
+
+<code>aa</code> and <code>bb</code> are numeric values between <code>01</code> and <code>96</code> representing the well of the 2nd and 1st round of barcode ligation. <code>cc</code> is a numeric value between <code>01</code> and <code>12</code> indicating the 12 tubes for multiplexing samples during tagmentation a nd reverse transcription steps.
+
+#### The following metrics from this stetp can be used for QC:
+
+Output from <code>reachtools combine2</code> step:
+
+<code>205158	229195	89.51% of reads have full barcodes for Test sample.</code>. 
+
+This ratio if the percentage of reads that can sucessfully extract all 3 barcodes from Read2.
+
+Typically, >85% and >75% of reads from DNA and RNA libraries will have all 3 barcodes.
+
+Output from <code>reachtools convert2</code> step:
+
+<code>205158 reads processed.</code>
+
+<code>185824 mapped reads.</code>
+
+This numbers are the reads that can be uniquely assigned to one Cellular Barocdes.
+
+Typically, >85% of reads (both DNA and RNA) can be assigned.
+
+
 ## 2 Mapping to the genome
 For DNA reads, we used bowtie2; for RNA reads, we used STAR.
 
