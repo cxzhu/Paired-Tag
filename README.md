@@ -54,7 +54,7 @@ Use shellscrips/01.pre_process_paired_tag_fastq.sh.
 
 The Cellular Barcode and UMI are in the format of <code>ILLUMINA_READ_NAME:aa:bb:cc:UMI</code>
 
-<code>aa</code> and <code>bb</code> are numeric values between <code>01</code> and <code>96</code> representing the well of the 2nd and 1st round of barcode ligation. <code>cc</code> is a numeric value between <code>01</code> and <code>12</code> indicating the 12 tubes for multiplexing samples during tagmentation a nd reverse transcription steps.
+<code>aa</code> and <code>bb</code> are numeric values between <code>01</code> and <code>96</code> representing the wells of the 2nd and 1st round of barcode ligation. <code>cc</code> is a numeric value between <code>01</code> and <code>12</code> indicating the 12 tubes for multiplexing samples during tagmentation a nd reverse transcription steps.
 
 #### The following metrics from this stetp can be used for QC:
 
@@ -83,6 +83,10 @@ For DNA reads, we used bowtie2; for RNA reads, we used STAR.
 Use shellscrips/02.proc_DNA.sh and shellscrips/03.proc_RNA.sh.
 
 After these, the fastq files of each sub-libraries were then converted to cell-counts matrices.
+
+*** Please modifiy the variables in the scripts according to your environment.
+
+Typically, >85% of RNA reads can be mapped to reference genome using STAR, but >60% is also accepatble. For different histone marks, from 60% - 95% of DNA reads can be mapped to reference genome using bowtie2 (including reads mapped to multiple loci).
 
 
 ## 3 Merge sub-libraries for downstream analysis
