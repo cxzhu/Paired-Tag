@@ -2201,12 +2201,12 @@ void convert2(string prefix){
 	fqline fastq_line;
 	char buffer[2000];
 	while(fgets(buffer, sizeof(buffer), inbam)){
-		++total;
 		string line(buffer);
 		line=cxstring::chomp(line);
 		if(line.substr(0, 1) == "@"){
 			continue;
 		}
+		++total;
 		align_line.init(line);
 		if(align_line.chr == "*")continue;
 		vector<string> tmp = cxstring::split(align_line.readname, ":");
