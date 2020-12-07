@@ -46,11 +46,11 @@ Use shellscrips/01.pre_process_paired_tag_fastq.sh.
 
 #### The output of this step includes:
 
-<code>Sample_combined.fq.gz</code>  This file is a combined fastq file including Read1 sequences/qualities and barcode sequences extracted from Read2.
+1. <code>Sample_combined.fq.gz</code>  This file is a combined fastq file including Read1 sequences/qualities and barcode sequences extracted from Read2.
 
-<code>Sample_BC.sam</code> This is a temporally file used to assign extracted barcode sequences to Cellular Barcode. Please delete this file if you have successful obtain <code>Sample_BC_cov.fq.gz</code>.
+2. <code>Sample_BC.sam</code> This is a temporally file used to assign extracted barcode sequences to Cellular Barcode. Please delete this file if you have successful obtained <code>Sample_BC_cov.fq.gz</code>.
 
-<code>Sample_BC_cov.fq.gz</code> This is the fastq file with Read1 sequences and qualities, the Cellular Barocde and UMI from Read2 are now in ReadName section of the fastq file (and subsequent alignment files).
+3. <code>Sample_BC_cov.fq.gz</code> This is the fastq file with Read1 sequences and qualities, the Cellular Barocde and UMI from Read2 are now in ReadName section of the fastq file (and subsequent alignment files).
 
 The Cellular Barcode and UMI are in the format of <code>ILLUMINA_READ_NAME:aa:bb:cc:UMI</code>
 
