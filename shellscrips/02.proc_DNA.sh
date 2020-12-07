@@ -1,4 +1,4 @@
-s="input-DNA-fastq-from-step-01"
+s="sample-prefix"
 mm10="path-to-mm10-ref"
 mm10_5k="path-to-your-5kb-bin-reference"
 trim_galore ${s}_BC_cov.fq.gz
