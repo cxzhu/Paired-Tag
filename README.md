@@ -38,7 +38,7 @@ STAR, https://github.com/alexdobin/STAR
 ## 1 Pre-processing
 Extract cellular barcode from Read2, map the reads to reference cell_ID, and convert the mapped cell ID samfiles to useable fastq files.
 
-Use shellscrips/01.pre_process_paired_tag_fastq.sh.
+Use <code>shellscrips/01.pre_process_paired_tag_fastq.sh</code>.
 
 *** See the comments in this script if you are processing fastq files downloaded directly from GEO.
 
@@ -80,7 +80,7 @@ Typically, >85% of reads (both DNA and RNA) can be assigned.
 ## 2 Mapping to the genome
 For DNA reads, we used bowtie2; for RNA reads, we used STAR.
 
-Use shellscrips/02.proc_DNA.sh and shellscrips/03.proc_RNA.sh.
+Use <code>shellscrips/02.proc_DNA.sh</code> and <code>shellscrips/03.proc_RNA.sh</code>.
 
 After these, the fastq files of each sub-libraries were then converted to cell-counts matrices.
 
@@ -94,7 +94,7 @@ The last round of combinatorial index is PCR indexing (sub-libraries).
 
 To merge matrices from different sub-libraires, an unique prefix should added to the cellular barcodes for each sub-library. Please also make sure the DNA and RNA sublibraries share the same set of sub-library-specific prefixes.
 
-Use perlscripts/merge_mtx.pl. Please see annotations in the script file for details.
+Use <code>perlscripts/merge_mtx.pl</code>. Please see annotations in the script file for details.
 
 ## 4 Downstream custom analyses
 You can cluster the single cells for DNA and RNA independely or jointly. 
