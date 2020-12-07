@@ -1,4 +1,4 @@
-s="input-RNA-fastq-from-step-01"
+s="sample-prefix"
 mm10="path-to-mm10-STAR-ref"
 mm10_rna="path-to-your-mm10-annotation-reference"
 trim_galore ${s}_BC_cov.fq.gz
