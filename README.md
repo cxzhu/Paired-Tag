@@ -94,7 +94,7 @@ The last round of combinatorial index is PCR indexing (sub-libraries).
 
 To merge matrices from different sub-libraires, an unique prefix should added to the cellular barcodes for each sub-library. Please also make sure the DNA and RNA sublibraries share the same set of sub-library-specific prefixes.
 
-Use perlscripts/merge_mtx.pl.
+Use perlscripts/merge_mtx.pl. Please see annotations in the script file for details.
 
 ## 4 Downstream custom analyses
 You can cluster the single cells for DNA and RNA independely or jointly. 
