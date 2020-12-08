@@ -96,6 +96,8 @@ To merge matrices from different sub-libraires, an unique prefix should added to
 
 Use <code>perlscripts/merge_mtx.pl</code>. Please see annotations in the script file for details.
 
+After merging, the sub-library ID will be added into the front of Cellular Barcodes, turns to <code>ii:aa:bb:cc</code>, where <code>ii</code> is the sub-library ID defined in <code>merge_list.txt</code>.
+
 ## 4 Downstream custom analyses
 You can cluster the single cells for DNA and RNA independely or jointly. 
 
