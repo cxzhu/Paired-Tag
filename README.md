@@ -35,7 +35,7 @@ STAR, https://github.com/alexdobin/STAR
 #### Analysis of Paired-Tag/Paired-seq datasets include the following steps:
 
 
-## 1 Pre-processing
+## 1. Pre-processing
 Extract cellular barcode from Read2, map the reads to reference cell_ID, and convert the mapped cell ID samfiles to useable fastq files.
 
 Use <code>shellscrips/01.pre_process_paired_tag_fastq.sh</code>.
@@ -77,7 +77,7 @@ This numbers are the reads that can be uniquely assigned to one Cellular Barocde
 Typically, >85% of reads (both DNA and RNA) can be assigned.
 
 
-## 2 Mapping to the genome
+## 2. Mapping to the genome
 For DNA reads, we used bowtie2; for RNA reads, we used STAR.
 
 Use <code>shellscrips/02.proc_DNA.sh</code> and <code>shellscrips/03.proc_RNA.sh</code>.
@@ -89,16 +89,16 @@ After these, the fastq files of each sub-libraries were then converted to cell-c
 Typically, >85% of RNA reads can be mapped to reference genome using STAR, but >60% is also accepatble. For different histone marks, from 60% - 95% of DNA reads can be mapped to reference genome using bowtie2 (including reads mapped to multiple loci).
 
 
-## 3 Merge sub-libraries for downstream analysis
+## 3. Merge sub-libraries for downstream analysis
 The last round of combinatorial index is PCR indexing (sub-libraries). 
 
 To merge matrices from different sub-libraires, an unique prefix should added to the cellular barcodes for each sub-library. Please also make sure the DNA and RNA sublibraries share the same set of sub-library-specific prefixes.
 
 Use <code>perlscripts/merge_mtx.pl</code>. Please see annotations in the script file for details.
 
-After merging, the sub-library ID will be added into the front of Cellular Barcodes, turns to <code>ii:aa:bb:cc</code>, where <code>ii</code> is the sub-library ID defined in <code>merge_list.txt</code>.
+After merging, the sub-library ID will be added into the front of Cellular Barcodes, turns to <code>ii:aa:bb:cc</code>, where <code>ii</code> is the sub-library ID defined in <code>merge_list.txt</code>. Please use the same set of sub-library IDs for the paired DNA and RNA datasets.
 
-## 4 Downstream custom analyses
+## 4. Downstream custom analyses
 You can cluster the single cells for DNA and RNA independely or jointly. 
 
 For RNA analysis, Seurat (http://www.satijalab.org/seurat) is recommended. 
