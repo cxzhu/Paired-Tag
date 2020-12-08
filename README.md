@@ -42,7 +42,7 @@ Extract cellular barcode from Read2, map the reads to reference cell_ID, and con
 
 Use <code>shellscrips/01.pre_process_paired_tag_fastq.sh</code>.
 
-*** See the annotations in this script if you are processing fastq files downloaded directly from GEO.
+*** See the annotations in this script if you are processing fastq files downloaded directly from [GEO](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE152020).
 
 
 #### The output of this step includes:
