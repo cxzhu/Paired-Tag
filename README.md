@@ -38,11 +38,12 @@ STAR, https://github.com/alexdobin/STAR
 ## 1. Pre-processing
 Extract cellular barcode from Read2, map the reads to reference cell_ID, and convert the mapped cell ID samfiles to useable fastq files.
 
+*** Please modification the paths to reference files according to the annotations in the script file.
+
 Use <code>shellscrips/01.pre_process_paired_tag_fastq.sh</code>.
 
-*** See the comments in this script if you are processing fastq files downloaded directly from GEO.
+*** See the annotations in this script if you are processing fastq files downloaded directly from GEO.
 
-*** Please modification the paths to reference files according to the annotations in the script file.
 
 #### The output of this step includes:
 
