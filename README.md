@@ -52,7 +52,7 @@ Extract cellular barcode from Read2, map the reads to reference cell_ID, and con
 
 Use <code>shellscrips/01.pre_process_paired_tag_fastq.sh</code>.
 
-*** As SRA will trim the header of fastq files and thus a different script will be needed. See the annotations in this script if you are processing fastq files downloaded from [SRA](https://www.ncbi.nlm.nih.gov/sra?term=SRP266461).
+*** As SRA will trim the header of fastq files and thus a different script will be needed. See the annotations in this file if you are processing fastq files downloaded from [SRA](https://www.ncbi.nlm.nih.gov/sra?term=SRP266461).
 
 
 #### The output of this step includes:
@@ -112,7 +112,7 @@ After merging, the sub-library ID will be added into the front of Cellular Barco
 ![Image_of_Barcode_format](https://github.com/cxzhu/Paired-Tag/blob/master/img/barcodes_format-01.png)
 
 ## 4. Downstream custom analyses
-You can cluster the single cells for DNA and RNA independely or jointly. The processed matrices files are available Supplementary file of this [GEO series](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE152020).
+You can cluster the single cells for DNA and RNA independely or jointly. The processed matrices files are available from Supplementary file of this [GEO series](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE152020).
 
 For RNA analysis, Seurat (http://www.satijalab.org/seurat) is recommended. 
 
