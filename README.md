@@ -103,6 +103,13 @@ Typically, >85% of RNA reads can be mapped to reference genome using STAR, but >
 ## 3. Merge sub-libraries for downstream analysis
 The last round of combinatorial index is PCR indexing (sub-libraries). 
 
+Optional but recommended: Filtering barcode with low reads numbers.
+Before merging sub-libraries, it is recommended to count the DNA and RNA reads numbers for each sub-libraries seperatedly and filter the low quality barcodes. A simple way is to plot the # of DNA and RNA reads for each barcodes (x-y in log scale, as in the picture shown below) and find a suitable cutoff from the plot.
+
+![image_of_reads](https://github.com/cxzhu/Paired-Tag/blob/master/img/reads_plot.png)
+
+Save the ID of barcodes with both high DNA and RNA reads number in a seperate file, and the <code>perlscript/filt_mtx.pl</code> to filter the raw matrix.
+
 To merge matrices from different sub-libraires, an unique prefix should added to the cellular barcodes for each sub-library. Please also make sure the DNA and RNA sublibraries share the same set of sub-library-specific prefixes.
 
 Use <code>perlscripts/merge_mtx.pl</code>. Please see annotations in the script file for details.
