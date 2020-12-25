@@ -104,7 +104,7 @@ Typically, >85% of RNA reads can be mapped to reference genome using STAR, but >
 The last round of combinatorial index is PCR indexing (sub-libraries). 
 
 Optional but recommended: Filtering barcode with low reads numbers.
-Before merging sub-libraries, it is recommended to count the DNA and RNA reads numbers for each sub-libraries seperatedly and filter the low quality barcodes. A simple way is to plot the # of DNA and RNA reads for each barcodes (x-y in log scale, as in the picture shown below) and find a suitable cutoff from the plot.
+Before merging sub-libraries, it is recommended to count the DNA and RNA reads numbers for each sub-libraries seperatedly and filter the low quality barcodes. A simple way is to plot the # of DNA and RNA reads for each barcodes (x-y in log scale, as in the picture shown below) and find a suitable cutoff from the plot, use <code>rscripts/plot_reads_numbers.R</code>.
 
 ![image_of_reads](https://github.com/cxzhu/Paired-Tag/blob/master/img/reads_plot.png)
 
