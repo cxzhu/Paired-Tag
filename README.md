@@ -1,4 +1,4 @@
-# Paired-Tag Analysis
+# Preprocessing of Paired-Tag/Paired-seq datasets
 #### Please have the following softwares installed first:
 
 bowtie, http://bowtie-bio.sourceforge.net/index.shtml
