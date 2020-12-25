@@ -9,6 +9,16 @@ Trim_galore, https://www.bioinformatics.babraham.ac.uk/projects/trim_galore/
 
 STAR, https://github.com/alexdobin/STAR
 
+Optional: FastQC, https://www.bioinformatics.babraham.ac.uk/projects/fastqc/
+
+#### Initial QC
+A quick initial QC can be done will FastQC software. FastQC will give a QC summary for several key quality metrics of fastq files generated from Illumina bcl2fastq program. The image below shows the "Per base sequence content" and "Adapter Concent" sections of the FastQC output file from a representative Paired-Tag library. 
+
+As shown in Read1 report, there is a high fraction of G base in the 2nd base, that is expected from the library construction (no trimming are needed for this part as Bowtie2 will handle it properly). For read2, there are 3 base balanced regions (UMI and barcode) between 3 base-inbalenced linkers (as indicated in the image). If the linker regions does not show high fluctuation as in the representative image, that may indicate a low ligation efficiency.
+
+For "Adapter Content" section, typically we will expect a low fraction of Nextera adaptor sequence (at 100th bp, 5%-20%; expect higher percentage if sequenced to 150 bp or longer) in Read2 library and negligible adaptor content from Read1 library. Higher fraction of adaptors (1) in RNA library indicates: amount of N5-Tn5 is too high in 2nd adaptor tagging step of RNA library, or (2) in DNA library: tagmentation efficiency (antibody efficiency) are low, may expect low library complexity.
+
+![Image_of_QC](https://github.com/cxzhu/Paired-Tag/blob/master/img/QC.png)
 
 #### Please follow the following steps to prepare the scripts for Paired-Tag data preprocessing.
 
@@ -97,7 +107,9 @@ To merge matrices from different sub-libraires, an unique prefix should added to
 
 Use <code>perlscripts/merge_mtx.pl</code>. Please see annotations in the script file for details.
 
-After merging, the sub-library ID will be added into the front of Cellular Barcodes, turns to <code>ii:aa:bb:cc</code>, where <code>ii</code> is the sub-library ID defined in <code>merge_list.txt</code>. Please use the same set of sub-library IDs for the paired DNA and RNA datasets.
+After merging, the sub-library ID will be added into the front of Cellular Barcodes, turns to <code>ii:aa:bb:cc</code>, where <code>ii</code> is the sub-library ID defined in <code>merge_list.txt</code> (see the picture below). Please use the same set of sub-library IDs for the paired DNA and RNA datasets.
+
+![Image_of_Barcode_format](https://github.com/cxzhu/Paired-Tag/blob/master/img/barcodes_format-01.png)
 
 ## 4. Downstream custom analyses
 You can cluster the single cells for DNA and RNA independely or jointly. 
