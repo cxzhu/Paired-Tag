@@ -2,9 +2,9 @@
 use strict;
 use warnings;
 
-my $metadata = "path-to-metadata" ## nuclei meta with barcode of pass filter cells, barcode in the first column.
-my $pre_mtx = "path-to-raw-matrix" ## raw matrix
-my $prefix = "prefix-of-filtered-matrix" ## prefix of output filtered matrix
+my $metadata = "path-to-metadata"; ## nuclei meta with barcode of pass filter cells, barcode in the first column.
+my $pre_mtx = "path-to-raw-matrix"; ## raw matrix
+my $prefix = "prefix-of-filtered-matrix"; ## prefix of output filtered matrix
 
 open IN, $metadata or die $!;
 
