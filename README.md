@@ -132,11 +132,11 @@ For DNA analysis, snapATAC (https://github.com/r3fang/SnapATAC) is recommeded.
   
 For more information, please refer to:
 
->- [Joint profiling of histone modifications and transcriptome in single cells from mouse brain.](https://www.nature.com/articles/s41592-021-01060-3) <em>Nature Methods</em>, 2021
+- [Joint profiling of histone modifications and transcriptome in single cells from mouse brain.](https://www.nature.com/articles/s41592-021-01060-3) <em>Nature Methods</em>, 2021
 
 A step-by-step protocol of Paired-Tag is also available from:
 
->- [High-throughput single-cell joint analysis of histone modifications and gene expression by Paired-Tag.](https://doi.org/10.21203/rs.3.pex-1301/v1)
+- [High-throughput single-cell joint analysis of histone modifications and gene expression by Paired-Tag.](https://doi.org/10.21203/rs.3.pex-1301/v1)
 
 
 
