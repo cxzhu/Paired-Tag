@@ -71,21 +71,21 @@ The Cellular Barcode and UMI are in the format of <code>ILLUMINA_READ_NAME:aa:bb
 
 Report from <code>reachtools combine2</code> step:
 
-    <code>205158	229195	89.51% of reads have full barcodes for Test sample.</code>. 
+<code>205158	229195	89.51% of reads have full barcodes for Test sample.</code>. 
 
-    This ratio if the percentage of reads that can sucessfully extract all 3 barcodes from Read2.
+This ratio if the percentage of reads that can sucessfully extract all 3 barcodes from Read2.
 
-    Typically, >85% and >75% of reads from DNA and RNA libraries will have all 3 barcodes.
+Typically, >85% and >75% of reads from DNA and RNA libraries will have all 3 barcodes.
 
 Report from <code>reachtools convert2</code> step:
 
-    <code>205158 reads processed.</code>
+<code>205158 reads processed.</code>
 
-    <code>185824 mapped reads.</code>
+<code>185824 mapped reads.</code>
 
-    This numbers are the reads that can be uniquely assigned to one Cellular Barocdes.
+This numbers are the reads that can be uniquely assigned to one Cellular Barocdes.
 
-    Typically, >85% of reads (both DNA and RNA) can be assigned.
+Typically, >85% of reads (both DNA and RNA) can be assigned.
 
 
 ## 2. Mapping to the genome
