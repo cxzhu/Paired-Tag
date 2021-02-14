@@ -1,15 +1,15 @@
 # Preprocessing of Paired-Tag/Paired-seq datasets
 #### Please have the following softwares installed first:
 
-bowtie, http://bowtie-bio.sourceforge.net/index.shtml
+- bowtie, http://bowtie-bio.sourceforge.net/index.shtml
 
-bowtie2, http://bowtie-bio.sourceforge.net/bowtie2/index.shtml
+- bowtie2, http://bowtie-bio.sourceforge.net/bowtie2/index.shtml
 
-Trim_galore, https://www.bioinformatics.babraham.ac.uk/projects/trim_galore/
+- Trim_galore, https://www.bioinformatics.babraham.ac.uk/projects/trim_galore/
 
-STAR, https://github.com/alexdobin/STAR
+- STAR, https://github.com/alexdobin/STAR
 
-Optional: FastQC, https://www.bioinformatics.babraham.ac.uk/projects/fastqc/
+- Optional: FastQC, https://www.bioinformatics.babraham.ac.uk/projects/fastqc/
 
 #### Initial QC
 A quick initial QC can be done will FastQC software. FastQC will give a QC summary for several key quality metrics of fastq files generated from Illumina bcl2fastq program. The image below shows the "Per base sequence content" and "Adapter Concent" sections of the FastQC output file from a representative Paired-Tag library. 
@@ -69,7 +69,7 @@ The Cellular Barcode and UMI are in the format of <code>ILLUMINA_READ_NAME:aa:bb
 
 #### The following metrics from this stetp can be used for QC:
 
-Report from <code>reachtools combine2</code> step:
+- Report from <code>reachtools combine2</code> step:
 
 <code>205158	229195	89.51% of reads have full barcodes for Test sample.</code>. 
 
@@ -77,7 +77,7 @@ This ratio if the percentage of reads that can sucessfully extract all 3 barcode
 
 Typically, >85% and >75% of reads from DNA and RNA libraries will have all 3 barcodes.
 
-Report from <code>reachtools convert2</code> step:
+- Report from <code>reachtools convert2</code> step:
 
 <code>205158 reads processed.</code>
 
@@ -89,11 +89,11 @@ Typically, >85% of reads (both DNA and RNA) can be assigned.
 
 
 ## 2. Mapping to the genome
-For DNA reads, we used bowtie2; for RNA reads, we used STAR.
+- For DNA reads, we used bowtie2; for RNA reads, we used STAR.
 
 Use <code>shellscrips/02.proc_DNA.sh</code> and <code>shellscrips/03.proc_RNA.sh</code>.
 
-After these, the fastq files of each sub-libraries were then converted to cell-counts matrices.
+- After these, the fastq files of each sub-libraries were then converted to cell-counts matrices.
 
 *** Please modifiy the variables in the scripts according to your environment.
 
@@ -103,27 +103,27 @@ Typically, >85% of RNA reads can be mapped to reference genome using STAR, but >
 ## 3. Merge sub-libraries for downstream analysis
 The last round of combinatorial index is PCR indexing (sub-libraries). 
 
-Optional but recommended: Filtering barcode with low reads numbers.
-Before merging sub-libraries, it is recommended to count the DNA and RNA reads numbers for each sub-libraries seperatedly and filter the low quality barcodes. A simple way is to plot the # of DNA and RNA reads for each barcodes (x-y in log scale, as in the picture shown below) and find a suitable cutoff from the plot, use <code>rscripts/plot_reads_numbers.R</code>.
+- Optional but recommended: Filtering barcode with low reads numbers.
+- Before merging sub-libraries, it is recommended to count the DNA and RNA reads numbers for each sub-libraries seperatedly and filter the low quality barcodes. A simple way is to plot the # of DNA and RNA reads for each barcodes (x-y in log scale, as in the picture shown below) and find a suitable cutoff from the plot, use <code>rscripts/plot_reads_numbers.R</code>.
 
 ![image_of_reads](https://github.com/cxzhu/Paired-Tag/blob/master/img/reads_plot.png)
 
-Save the ID of barcodes with both high DNA and RNA reads number in a seperate file, and the <code>perlscript/filt_mtx.pl</code> to filter the raw matrix.
+- Save the ID of barcodes with both high DNA and RNA reads number in a seperate file, and the <code>perlscript/filt_mtx.pl</code> to filter the raw matrix.
 
-To merge matrices from different sub-libraires, an unique prefix should added to the cellular barcodes for each sub-library. Please also make sure the DNA and RNA sublibraries share the same set of sub-library-specific prefixes.
+- To merge matrices from different sub-libraires, an unique prefix should added to the cellular barcodes for each sub-library. Please also make sure the DNA and RNA sublibraries share the same set of sub-library-specific prefixes.
 
 Use <code>perlscripts/merge_mtx.pl</code>. Please see annotations in the script file for details.
 
-After merging, the sub-library ID will be added into the front of Cellular Barcodes, turns to <code>ii:aa:bb:cc</code>, where <code>ii</code> is the sub-library ID defined in <code>merge_list.txt</code> (see the picture below). Please use the same set of sub-library IDs for the paired DNA and RNA datasets.
+- After merging, the sub-library ID will be added into the front of Cellular Barcodes, turns to <code>ii:aa:bb:cc</code>, where <code>ii</code> is the sub-library ID defined in <code>merge_list.txt</code> (see the picture below). Please use the same set of sub-library IDs for the paired DNA and RNA datasets.
 
 ![Image_of_Barcode_format](https://github.com/cxzhu/Paired-Tag/blob/master/img/barcodes_format-01.png)
 
 ## 4. Downstream custom analyses
 You can cluster the single cells for DNA and RNA independely or jointly. The processed matrices files are available from Supplementary file of this [GEO series](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE152020).
 
-For RNA analysis, Seurat (http://www.satijalab.org/seurat) is recommended. 
+- For RNA analysis, Seurat (http://www.satijalab.org/seurat) is recommended. 
 
-For DNA analysis, snapATAC (https://github.com/r3fang/SnapATAC) is recommeded.
+- For DNA analysis, snapATAC (https://github.com/r3fang/SnapATAC) is recommeded.
 
 
 
