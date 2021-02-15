@@ -136,7 +136,7 @@ For more information, please refer to:
 
 A step-by-step protocol of Paired-Tag is also available from:
 
-- [High-throughput single-cell joint analysis of histone modifications and gene expression by Paired-Tag.](https://doi.org/10.21203/rs.3.pex-1301/v1)
+- [High-throughput single-cell joint analysis of histone modifications and gene expression by Paired-Tag.](https://protocolexchange.researchsquare.com/article/pex-1301/v1)
 
 
 
