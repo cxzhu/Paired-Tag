@@ -1926,11 +1926,11 @@ void combine2(string r2, string ty){
 	pclose(red2);
 	pclose(outfile);
 
-	// cout << total << " read pairs processed." << endl;
-	// cout << pass << " read pairs passed docking rate." << endl;
-	int aaa = int(pass*10000/total);
-	float ratio = float(aaa) / 100;
-	cout << pass << "\t" << total << "\t" << ratio << "%" << " of reads have full barcodes for " << r2 << " sample." << endl;
+	int aaa = pass*10000/total;
+	float ratio = (float)aaa / 100;
+	cout << "==================================================\nPaired-seq/Tag Barcode Locator Report: " << r2 << endl;
+	cout << "# total raw reads:\t\t" << total << endl << "# of full barcoded reads:\t" << pass << endl;
+	cout << "% of full barcode reads:\t" << ratio << "%\n==================================================" << endl << endl;
 	return;
 
 }
