@@ -1,8 +1,8 @@
-# Paired-Tag protocol
+# Paired-Tag protocol & FAQs
 
 #### To access the latest [Paired-Tag protocol](https://github.com/cxzhu/Paired-Tag/blob/master/protocol/Paired-Tag_protocol.pdf).
 
-### FAQ:
+### FAQs:
 #### 1. What purification method should I use for ordering the oligo DNA sequences?
 (a) For 96-well barcode plates, a standard desalting is OK for this purpose.
 (b) For Tn5 adaptor sequences (BC Plate#01, DNA_#01_RE to DNA_#12_RE and pMENTs), we used standard desalting. However, some lab reported using HPLC purification for the Tn5 adaptor sequences will increase the tagmentation efficiency; we did not tested this.
