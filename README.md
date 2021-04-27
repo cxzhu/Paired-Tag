@@ -1,4 +1,7 @@
 # Preprocessing of Paired-Tag/Paired-seq datasets
+
+#### For latest protocol, please refer to [Paired-Tag protocol & FAQs](https://github.com/cxzhu/Paired-Tag/tree/master/protocol).
+
 #### Please have the following softwares installed first:
 
 - bowtie, http://bowtie-bio.sourceforge.net/index.shtml
