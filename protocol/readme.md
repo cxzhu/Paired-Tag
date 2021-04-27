@@ -19,3 +19,6 @@ Light crosslinking will help reduce nuclei clumping in [CUT&Tag](https://www.nat
 
 #### 4. How can I reduce nuclei clumping?
 Adding 1% BSA will help to reduce nuclei clumping for native nuclei, as described in [this paper](https://www.nature.com/articles/s41587-021-00869-9). According to our recent optimization, adding 1%-5% BSA into Complete Buffer, Med Buffer #1 and Med Buffer #2 and 0.1% BSA into reverse transcriptione buffer will help reduce nuclei clumping.
+
+#### 5. Can I use Nextera XT DNA Library Prep Kit for cDNA library prepration?
+Yes, you can use Nextera XT DNA Library Prep Kit to replace Tn5-Adaptor tagmentation. But please note to use TruSeq i7 primer + Nextera i5 primer to do the index PCR amplification, as the cellular barcodes were attached with a TruSeq i7 adaptor during ligation.
