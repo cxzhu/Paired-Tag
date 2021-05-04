@@ -1,6 +1,6 @@
 # Paired-Tag protocol & FAQs
 
-#### To access the latest [Paired-Tag protocol](https://github.com/cxzhu/Paired-Tag/blob/master/protocol/Paired-Tag_protocol.pdf).
+#### To access the latest [Paired-Tag protocol](https://github.com/cxzhu/Paired-Tag/raw/master/protocol/Protocol_Github.pdf).
 
 ### FAQs:
 #### 1. What purification method should I use for ordering the oligo DNA sequences?
