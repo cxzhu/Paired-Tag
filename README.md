@@ -122,12 +122,7 @@ After merging, the sub-library ID will be added into the front of Cellular Barco
 ![Image_of_Barcode_format](https://github.com/cxzhu/Paired-Tag/blob/master/img/barcodes_format-01.png)
 
 ## 4. Downstream custom analyses
-You can cluster the single cells for DNA and RNA independely or jointly. The processed matrices files are available from Supplementary file of this [GEO series](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE152020).
-
-- For RNA analysis, Seurat (http://www.satijalab.org/seurat) is recommended. 
-
-- For DNA analysis, snapATAC (https://github.com/r3fang/SnapATAC) is recommeded.
-
+You can cluster the single cells for DNA and RNA independely or jointly. The processed matrices files are available from Supplementary file of this [GEO series](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE152020). E.g., for RNA analysis, Seurat (http://www.satijalab.org/seurat) can be used for scRNA-seq and  snapATAC (https://github.com/r3fang/SnapATAC) can used for DNA analysis.
 
 
 <br>
