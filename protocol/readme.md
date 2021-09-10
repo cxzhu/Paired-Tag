@@ -25,7 +25,7 @@ The purification is described in [this paper](https://urldefense.com/v3/__https:
 #### Can I use crosslinked nuclei?
 Light crosslinking will help reduce nuclei clumping in [CUT&Tag](https://www.nature.com/articles/s41596-020-0373-x). However, Paired-Tag uses a different library preparation strategy and crosslinking will reduce the DNA library complexity, and thus native nuclei is recommended.
 
-### What is the rational of the P5 adaptor mix? What are the functions of P5-FokI and P5H-FokI?
+#### What is the rational of the P5 adaptor mix? What are the functions of P5-FokI and P5H-FokI?
 The FokI cutting may generate a C in the first base of Read1. To increase sequencing quality, we mix P5H (add one additional H just after Read1 primer) to unshift this consistent C base to increase sequencing quality.
 
 #### How can I reduce nuclei clumping?
