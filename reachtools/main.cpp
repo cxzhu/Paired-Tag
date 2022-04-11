@@ -53,7 +53,6 @@ void convert2_help();
 void determine_type(string sample, string ty);
 void determine_type_help();
 void filt_bam(string list, string inbam, string type);
-void filt_bam_help();
 /*
 void pca(string string);
 void pca_help();
