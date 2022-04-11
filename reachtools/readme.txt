@@ -1,3 +1,11 @@
+Update 220404:
+
+1. Add combine3 to process 8-bp barcodes;
+2. Add determine_type and filtBam to mark and remove cross-modality contamination reads;
+3. Add duplicates marking function to rmdup2.
+
+========================================================================================
+
 As the library structure of Paired-tag and current version of Paired-seq is different from initial version of Paired-seq described in Zhu et.al., NSMB, 2019, please be aware to use the right version of reachtools.
 
 This one is for Paired-tag/Paired-seq version 2020 only!
