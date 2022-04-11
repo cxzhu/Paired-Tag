@@ -42,7 +42,10 @@ For "Adapter Content" section, typically we will expect a low fraction of Nexter
 <code>cd ../references</code>
 
 <code>bowtie-build ./cell_id_full.fa cell_id</code>
+or
+<code>bowtie-build ./cell_id_full_407.fa cell_id_407</code>
 
+The two references provided are different in the barcodes length. In order to increase the throughput of Paired-Tag, we further scaled up the number of barcodes used for 2nd and 3rd round barocding from 96 to 384. To ensure hamming distance between barcodes we therefore increase barcodes length from 7bp to 8bp. If you are using your own barocdes please genreate the barcodes reference based on your sequence. 
 
 
 #### Analysis of Paired-Tag/Paired-seq datasets include the following steps:
@@ -68,7 +71,7 @@ Use <code>shellscrips/01.pre_process_paired_tag_fastq.sh</code>.
 
 The Cellular Barcode and UMI are in the format of <code>ILLUMINA_READ_NAME:aa:bb:cc:UMI</code>
 
-<code>aa</code> and <code>bb</code> are numeric values between <code>01</code> and <code>96</code> representing the wells of the 2nd and 1st round of barcode ligation. <code>cc</code> is a numeric value between <code>01</code> and <code>12</code> indicating the 12 tubes for multiplexing samples during tagmentation a nd reverse transcription steps.
+<code>aa</code> and <code>bb</code> are representing the wells of the 2nd and 1st round of barcode ligation. <code>cc</code> is a numeric value between <code>01</code> and <code>12</code> indicating the 12 tubes for multiplexing samples during tagmentation a nd reverse transcription steps.
 
 #### The following metrics from this stetp can be used for QC:
 

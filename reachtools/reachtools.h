@@ -80,6 +80,8 @@ public:
 
 	void trim(){
 		// NNNNNNNNNNNNNNNNNGTGGCCGATGTTTCGCATCGGCGTACGACTNNNNNNNGGATTCGAGGAGCGTGTGCGAACTCAGACCNNNNNNNATCCACGTGCTTGAGAGGCCAGAGCATTCGNNNNNNN
+		// GATCTGGGTTAAACGTCGTGGCCGATGTTTCGCATCGGCGTACGACTAAACCGGGGATTCGAGGAGCGTGTGCGAACTCAGACCAAACCGGATCCACGTGCTTGAGAGGCCAGAGCATTCGAGTGAGCGC
+		// TGATTTGTGAAAACGTCGTGGCCGATGTTTCGCATCGGCGTACGACTAAACCGG
 		// 1 determine additional Ns
 
 		if(rawline.length() < 125)return;
@@ -94,7 +96,7 @@ public:
 			cur_s = score;
 			t = i;
 		}
-		//if(cur_s<15)return;
+		// if(cur_s<15)return;
 		if(cur_s<3)return;
 		dock = 1;
 		sbc1 = rawline.substr(10, 7);
@@ -108,17 +110,20 @@ public:
 
 		//2nd bc
 		bait = "GGATTCGAGGAGCGT";
-		cur_s = 0;
+		cur_s = 10;
 		int tt = t;
+		string squ;
 		for(int i = -2; i < 3; ++i){
 			string qu = rawline.substr(54+i+tt, 15);
 			int score = align_score(qu, bait);
 			if(score < cur_s)continue;
 			cur_s = score;
-			tt = t + i;
+//			tt = t + i;
+//			squ = qu;
 		}
-		//if(cur_s<13)return;
-		if(cur_s<2)return;
+		// if(cur_s<13)return;
+//		cout << "QU: " << squ << "\tScore: "<< cur_s << "\tdock:";
+		if(cur_s<11)return;
 		t = tt;
 		sbc2 = rawline.substr(47+t, 7);
 		dock = 2;
@@ -133,6 +138,7 @@ public:
 			cur_s = score;
 			tt = t + i;
 		}
+		// if(cur_s<10)return;
 		if(cur_s<2)return;
 		t = tt;
 		sbc3 = rawline.substr(84+t, 7);
@@ -148,7 +154,7 @@ public:
 			cur_s = score;
 			tt = t + i;
 		}
-		//if(cur_s<9)return;
+		// if(cur_s<9)return;
 		if(cur_s<1)return;
 		t = tt;
 		if(rawline.length() < 126+t)return;
@@ -432,7 +438,7 @@ public:
 		//if(cur_s<9)return;
 		if(cur_s<11)return;
 		t = tt;
-		if(rawline.length() < 89+t)return;
+		if(rawline.length() < 90+t)return;
 		//sbc4 = rawline.substr(86+t, 3);
 		sbc4 = rawline.substr(85+t, 4);
 		//bsbc4 = rawline.substr(82+t, 7);
@@ -440,23 +446,24 @@ public:
 		// determine type
 		// DNA TC
 		// RNA AG
-		//cur_s = 0;
-		//string b1 = rawline.substr(84+t, 1);
-		//string b2 = rawline.substr(85+t, 1);
-		//if(b1 == "A")cur_s++;
-		//if(b1 == "T")cur_s--;
-		//if(b2 == "G")cur_s++;
-		//if(b2 == "C")cur_s--;
-		//if(cur_s > 0){
-		//	type = "d";
-		//}
-		//else if(cur_s < 0){
-		//	type = "r";
-		//}
-		//else{
-		//	type = "n";
-		//}
-		type= "a";
+		cur_s = 0;
+		string b1 = rawline.substr(84+t, 1);
+		string b2 = rawline.substr(89+t, 1);
+		//string b3 = rawline.substr(91+t, 1);
+		if(b1 == "A")cur_s++;
+		if(b1 == "T")cur_s--;
+		if(b2 == "G")cur_s++;
+		if(b2 == "C")cur_s--;
+		if(cur_s > 0){
+			type = "d";
+		}
+		else if(cur_s < 0){
+			type = "r";
+		}
+		else{
+			type = "n";
+		}
+
 		return;
 	}
 
@@ -601,7 +608,7 @@ public:
 	}
 };
 
-class read2_3r { //for 8bp BC
+class read2_3r { // #8bp barcodes
 private:
 	int align_score(string str1, string str2){
 		int score = 0;
@@ -626,8 +633,8 @@ public:
 	}
 
 	void trim(){
-		// nnnnNNNNNNNNNNNNNNNNNGTGGCCGATGTTTCGGTGCGAACTCAGACCNNNNNNNATCCACGTGCTTGAGAGGCCAGAGCATTCGXXNNNNN
-		//".   NNNNNNNNNNNNNNNNNGTGGCCGATGTTTCGGTGCGAACTCAGACCNNNNNNNATCCACGTGCTTGAGAGGCCAGAGCATTCGXNNNNYY";
+		// NNNNNNNNNNNNNNNNNNnnnnGTGGCCGATGTTTCGGTGCGAACTCAGACCNNNNNNNNATCCACGTGCTTGAGAGGCCAGAGCATTCGXXNNNNN
+		//"NNNNNNNNNNNNNNNNNNGTGGCCGATGTTTCGGTGCGAACTCAGACCNNNNNNNNATCCACGTGCTTGAGAGGCCAGAGCATTCGXNNNNYY";
 		// 1 determine additional Ns
 
 		if(rawline.length() < 95)return;
@@ -681,38 +688,17 @@ public:
 			cur_s = score;
 			tt = t + i;
 		}
-		//if(cur_s<9)return;
 		if(cur_s<11)return;
 		t = tt;
 		if(rawline.length() < 89+t)return;
-		//sbc4 = rawline.substr(86+t, 3);
 		sbc4 = rawline.substr(87+t, 4);
-		//bsbc4 = rawline.substr(82+t, 7);
 		dock = 4;		
-		// determine type
-		// DNA TC
-		// RNA AG
-		//cur_s = 0;
-		//string b1 = rawline.substr(84+t, 1);
-		//string b2 = rawline.substr(85+t, 1);
-		//if(b1 == "A")cur_s++;
-		//if(b1 == "T")cur_s--;
-		//if(b2 == "G")cur_s++;
-		//if(b2 == "C")cur_s--;
-		//if(cur_s > 0){
-		//	type = "d";
-		//}
-		//else if(cur_s < 0){
-		//	type = "r";
-		//}
-		//else{
-		//	type = "n";
-		//}
+
 		type= "a";
 		return;
 	}
 
-	void extract_barcode(bc_library lib, int score1, int score2){ // extract bc from list, rather than mapping?
+	void extract_barcode(bc_library lib, int score1, int score2){
 		bool v1,v2,v4 = false;
 		if(dock <7 ) return;
 		//bc#1
@@ -724,9 +710,6 @@ public:
 			if(cur_score < score){
 				continue;
 			}
-			//else if(cur_score == score){
-			//	v1 = false;
-			//}
 			else{
 				v1 = true;
 				score = cur_score;
@@ -755,9 +738,6 @@ public:
 			if(cur_score < score){
 				continue;
 			}
-			//else if(cur_score == score){
-			//	v2 = false;
-			//}
 			else{
 				v2 = true;
 				score = cur_score;
@@ -787,9 +767,6 @@ public:
 			if(cur_score < score){
 				continue;
 			}
-			//else if(cur_score == score){
-			//	v4 = false;
-			//}
 			else{
 				v4 = true;
 				score = cur_score;
