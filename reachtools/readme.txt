@@ -1,3 +1,8 @@
+Update 220524:
+
+1. Merge determine_type into combine2/3 function. Now the readType file should be generated after calling combine2/3, so there is no more need to call determine_type separately. This is also to prevent setting wrong barcode length when calling determine_type separately.
+
+========================================================================================
 Update 220404:
 
 1. Add combine3 to process 8-bp barcodes;
