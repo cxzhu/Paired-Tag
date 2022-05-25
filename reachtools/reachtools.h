@@ -693,8 +693,27 @@ public:
 		if(rawline.length() < 89+t)return;
 		sbc4 = rawline.substr(87+t, 4);
 		dock = 4;		
-
-		type= "a";
+		// type= "a";
+		// determine type
+		// DNA TC
+		// RNA AG
+		cur_s = 0;
+		string b1 = rawline.substr(86+t, 1);
+		string b2 = rawline.substr(91+t, 1);
+		//string b3 = rawline.substr(91+t, 1);
+		if(b1 == "A")cur_s++;
+		if(b1 == "T")cur_s--;
+		if(b2 == "G")cur_s++;
+		if(b2 == "C")cur_s--;
+		if(cur_s > 0){
+			type = "d";
+		}
+		else if(cur_s < 0){
+			type = "r";
+		}
+		else{
+			type = "n";
+		}
 		return;
 	}
 

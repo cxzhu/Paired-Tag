@@ -420,7 +420,7 @@ void help(){
 	cout << "\tbam2Mtx/bam2Mtx2\tTransform splitted bam file into Matrix File. bam2Mtx2 extracts cell barcode only (bb:cc:dd) while bam2Mtx can extract additional barcode (aa:bb:cc:dd)" << endl << endl;
 
 	cout << "A typical pipeline now includes:\n\tStep1:\tcombine/combine2\n\tStep2:\tMapping to BC index\n\tStep3:\tconvert/convert2\n\tStep4:\tMapping to genome\n\tStep5:\trmdup/rmdup2\n\tStep6:\tbam2Mtx/bam2Mtx2\n\n";
-	cout << "Cross-modality contamination is infrequent but can sometimes be observed. In this case,\n\tStep6.1:\tdetermine_type\n\tStep6.2:\tfilt_bam\ncan be performed to remove contaminated reads in the final bam files before bam2Mtx conversion.\n";
+	cout << "Cross-modality contamination is infrequent but can sometimes be observed. In this case,\n\tStep6:\tfilt_bam\ncan be performed to remove contaminated reads in the final bam files before bam2Mtx conversion.\n";
 	cout << "\n*(obs): functions for customized optimization only, no longer necessary for standard pipeline." << endl << endl;
 //	cout << endl << "\tgenerateMatrix\t\tGenerate data-matrix from peak calling file and bam file." << endl;
 
@@ -1923,9 +1923,17 @@ void combine_help(){
 void combine2(string r2, string ty){
 	int total = 0;
 	int pass = 0;
+	int dna = 0;
+	int rna = 0;
+	int und = 0;
 	string s1;
 	string s2;
 	string s3;
+	s1 = "gzip - > ";
+	s2 = r2 + "_type_report.xls.gz";
+	s3 = s1 + s2;
+	FILE * outType;
+	outType = popen(s3.c_str(), "w");
 	if(ty == "gz"){
 		s1 = "zcat ";
 		s2 = r2 + "_R1.fq.gz";
@@ -1974,25 +1982,37 @@ void combine2(string r2, string ty){
 		in_line2.seq = new_seq;
 		in_line2.qual = in_line2.qual.substr(0, in_line2.seq.length());
 		if(in_line2.seq.length()!=18)continue;
-		//if(in_line2.seq.length()!=17)continue;
-		//in_line2.seq = new_seq;
+		string type = read_2.type;
+		if(type == "d"){
+			dna++;
+		}
+		if(type == "r"){
+			rna++;
+		}
+		if(type == "n"){
+			und++;
+		}
 		string a;
 		stringstream as;
 		as << in_line2.readname;
 		as >> a;
 		in_line2.readname = a + ":" + umi + ":" + in_line1.seq + ":" + in_line1.qual;
+		string out_type = a + "\t" + type;
 		//in_line.readname = in_line.readname + ":" + umi;
 		in_line2.write_record(outfile);
+		fputs((out_type + "\n").c_str(), outType);
 		++pass;
 	}
 	pclose(red1);
 	pclose(red2);
 	pclose(outfile);
+	pclose(outType);
 
 	int aaa = pass*10000/total;
 	float ratio = (float)aaa / 100;
 	cout << "==================================================\nPaired-seq/Tag Barcode Locator Report: " << r2 << endl;
 	cout << "# total raw reads:\t\t" << total << endl << "# of full barcoded reads:\t" << pass << endl;
+	cout << "# of DNA reads:\t\t\t" << dna << endl << "# of RNA reads:\t\t\t" << rna << endl << "# of und reads:\t\t\t" << und << endl;
 	cout << "% of full barcode reads:\t" << ratio << "%\n==================================================" << endl << endl;
 	return;
 
@@ -2008,6 +2028,14 @@ void combine3(string r2, string ty){
 	string s1;
 	string s2;
 	string s3;
+	int dna = 0;
+	int rna = 0;
+	int und = 0;
+	s1 = "gzip - > ";
+	s2 = r2 + "_type_report.xls.gz";
+	s3 = s1 + s2;
+	FILE * outType;
+	outType = popen(s3.c_str(), "w");
 	if(ty == "gz"){
 		s1 = "zcat ";
 		s2 = r2 + "_R1.fq.gz";
@@ -2056,25 +2084,37 @@ void combine3(string r2, string ty){
 		in_line2.seq = new_seq;
 		in_line2.qual = in_line2.qual.substr(0, in_line2.seq.length());
 		if(in_line2.seq.length()!=20)continue;
-		//if(in_line2.seq.length()!=17)continue;
-		//in_line2.seq = new_seq;
+		string type = read_2.type;
+		if(type == "d"){
+			dna++;
+		}
+		if(type == "r"){
+			rna++;
+		}
+		if(type == "n"){
+			und++;
+		}
 		string a;
 		stringstream as;
 		as << in_line2.readname;
 		as >> a;
 		in_line2.readname = a + ":" + umi + ":" + in_line1.seq + ":" + in_line1.qual;
+		string out_type = a + "\t" + type;
 		//in_line.readname = in_line.readname + ":" + umi;
 		in_line2.write_record(outfile);
+		fputs((out_type + "\n").c_str(), outType);
 		++pass;
 	}
 	pclose(red1);
 	pclose(red2);
 	pclose(outfile);
+	pclose(outType);
 
 	int aaa = pass*10000/total;
 	float ratio = (float)aaa / 100;
 	cout << "==================================================\nPaired-seq/Tag Barcode Locator Report: " << r2 << endl;
 	cout << "# total raw reads:\t\t" << total << endl << "# of full barcoded reads:\t" << pass << endl;
+	cout << "# of DNA reads:\t\t\t" << dna << endl << "# of RNA reads:\t\t\t" << rna << endl << "# of und reads:\t\t\t" << und << endl;
 	cout << "% of full barcode reads:\t" << ratio << "%\n==================================================" << endl << endl;
 	return;
 
@@ -2398,9 +2438,9 @@ void filt_bam(string list, string inbam, string type){
 		if(sp[1][0]==t)continue;
 		rname[sp[0]]=1;
 	}
-	cout<<"Readname read finished.."<<endl;
+	cout<<"filtType: Readname read finished.."<<endl;
 	pclose(infile);
-	cout<<"Processing bam file..."<<endl;
+	cout<<"filtType: Processing bam file..."<<endl;
 	s1 = "samtools view -h ";
 	s2 = inbam;
 	s3 = s1 + s2;
@@ -2415,10 +2455,10 @@ void filt_bam(string list, string inbam, string type){
 	while(fgets(buffer, sizeof(buffer), infile)){
 		string line(buffer);
 	
-		if(sub==1000000){
-			sub=0;
-			cout<<"[filtering bam] "<<total<<" reads processed..." << endl;
-		}
+		// if(sub==1000000){
+		// 	sub=0;
+		// 	cout<<"[filtering bam] "<<total<<" reads processed..." << endl;
+		// }
 		if(line.substr(0, 1) == "@"){
 			fputs(line.c_str(), outfile);
 			continue;
@@ -2436,7 +2476,7 @@ void filt_bam(string list, string inbam, string type){
 	}
 	pclose(infile);
 	pclose(outfile);
-	cout <<"==========" << endl;
+	cout <<"========== filtType Report ==========" << endl;
 	cout <<"Total:\t"<<total<<" reads in bam"<<endl;
 	cout<<"PF:\t"<<pf_reads<<" reads writen"<<endl;
 
