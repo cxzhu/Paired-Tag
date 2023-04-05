@@ -56,7 +56,7 @@ foreach my $i (sort keys %clusters){
 
 
 my $init = 0;
-foreach my $bam (@bams){
+foreach my $bam (%bams){
 	$init++;
 	if($init == 1){
 		open IN, "samtools view -h $bam|" or die $!;
